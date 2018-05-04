@@ -160,8 +160,10 @@ public class BackupPSQL {
 		});
 
 		radioLocalHost.setSelected(true);
+		
+		/*Pode-se especificar um valor padrão para os campos*/
 		endOutro.setText("localhost");
-		txtBanco.setText("sgfpod1");
+		txtBanco.setText("");
 
 	}
 
