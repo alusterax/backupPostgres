@@ -6,32 +6,23 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
-import java.awt.BorderLayout;
-import javax.swing.JPanel;
-import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
+
 import java.util.Map;
 
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
 import javax.swing.JTextField;
-import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.filechooser.FileNameExtensionFilter;
-import javax.swing.plaf.basic.BasicBorders.RadioButtonBorder;
 import javax.swing.JRadioButton;
-import javax.swing.JTree;
 import javax.swing.UIManager;
-import javax.swing.JToggleButton;
-import javax.swing.JRadioButtonMenuItem;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
 
 public class BackupPSQL {
 
@@ -71,7 +62,9 @@ public class BackupPSQL {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		ImageIcon img = new ImageIcon("pgadmin.png");
 		frmBackupPostgresql = new JFrame();
+		frmBackupPostgresql.setIconImage(img.getImage());
 		frmBackupPostgresql.setTitle("Backup PostgreSQL");
 		frmBackupPostgresql.setBounds(100, 100, 311, 202);
 		frmBackupPostgresql.setResizable(false);
@@ -160,10 +153,10 @@ public class BackupPSQL {
 		});
 
 		radioLocalHost.setSelected(true);
-		
-		/*Pode-se especificar um valor padrão para os campos*/
+
+		/* Pode-se especificar um valor padrão para os campos */
 		endOutro.setText("localhost");
-		txtBanco.setText("");
+		txtBanco.setText("sgfpod1");
 
 	}
 
@@ -181,16 +174,17 @@ public class BackupPSQL {
 		ProcessBuilder pb;
 		rt = Runtime.getRuntime();
 
-		/* Cria um processo, executando os parâmetros do pg_dump do PostgreSQL a partir das variáveis coletadas até então 
-		 * --host: define o host do servidor, pode ser tanto localhost quanto outro endereço.
-		 * --port: define a porta com que o serviço do PostgreSQL trabalha no servidor.
-		 * --username: usuário do servidor
-		 * --format: define que o formato do backup é customizado
-		 * --blobs: define que objetos grandes podem ser incluidos no dump
-		 * --verbose: define que o log do backup será detalhado
-		 * --file: especifica o diretório para onde o arquivo será salvo, incluindo o nome do arquivo.
-		 * */
-		
+		/*
+		 * Cria um processo, executando os parâmetros do pg_dump do PostgreSQL a partir
+		 * das variáveis coletadas até então --host: define o host do servidor, pode ser
+		 * tanto localhost quanto outro endereço. --port: define a porta com que o
+		 * serviço do PostgreSQL trabalha no servidor. --username: usuário do servidor
+		 * --format: define que o formato do backup é customizado --blobs: define que
+		 * objetos grandes podem ser incluidos no dump --verbose: define que o log do
+		 * backup será detalhado --file: especifica o diretório para onde o arquivo será
+		 * salvo, incluindo o nome do arquivo.
+		 */
+
 		pb = new ProcessBuilder("C:\\Program Files\\PostgreSQL\\9.5\\bin\\pg_dump.exe", "--host", host, "--port",
 				"5432", "--username", "postgres", "--no-password", "--format", "custom", "--blobs", "--verbose",
 				"--file", diretorio, banco);
@@ -210,9 +204,11 @@ public class BackupPSQL {
 
 			System.out.println(p.exitValue());
 
-		/* Caso ocorra um erro, mostra um diálogo genérico de erro, 
-		 * senão, mostra um resumo das informações do backup.*/
-			
+			/*
+			 * Caso ocorra um erro, mostra um diálogo genérico de erro, senão, mostra um
+			 * resumo das informações do backup.
+			 */
+
 		} catch (IOException | InterruptedException e) {
 			e.printStackTrace();
 			JOptionPane.showMessageDialog(null, "Ocorreu um erro desconhecido");
@@ -287,7 +283,7 @@ public class BackupPSQL {
 	}
 
 	/*
-	 * Verificação entre localhost e outro Sempre retorna na variavel endOutro
+	 * Verificação entre localhost e outro, Sempre retorna na variavel endOutro
 	 */
 	private String verificaLocalhost() {
 		String result = "";
