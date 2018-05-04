@@ -154,9 +154,9 @@ public class BackupPSQL {
 
 		radioLocalHost.setSelected(true);
 
-		/* Pode-se especificar um valor padr„o para os campos */
+		/* Pode-se especificar um valor padr√£o para os campos */
 		endOutro.setText("localhost");
-		txtBanco.setText("sgfpod1");
+		txtBanco.setText("");
 
 	}
 
@@ -175,13 +175,13 @@ public class BackupPSQL {
 		rt = Runtime.getRuntime();
 
 		/*
-		 * Cria um processo, executando os par‚metros do pg_dump do PostgreSQL a partir
-		 * das vari·veis coletadas atÈ ent„o --host: define o host do servidor, pode ser
-		 * tanto localhost quanto outro endereÁo. --port: define a porta com que o
-		 * serviÁo do PostgreSQL trabalha no servidor. --username: usu·rio do servidor
-		 * --format: define que o formato do backup È customizado --blobs: define que
+		 * Cria um processo, executando os par√¢metros do pg_dump do PostgreSQL a partir
+		 * das vari√°veis coletadas at√© ent√£o --host: define o host do servidor, pode ser
+		 * tanto localhost quanto outro endere√ßo. --port: define a porta com que o
+		 * servi√ßo do PostgreSQL trabalha no servidor. --username: usu√°rio do servidor
+		 * --format: define que o formato do backup √© customizado --blobs: define que
 		 * objetos grandes podem ser incluidos no dump --verbose: define que o log do
-		 * backup ser· detalhado --file: especifica o diretÛrio para onde o arquivo ser·
+		 * backup ser√° detalhado --file: especifica o diret√≥rio para onde o arquivo ser√°
 		 * salvo, incluindo o nome do arquivo.
 		 */
 
@@ -205,8 +205,8 @@ public class BackupPSQL {
 			System.out.println(p.exitValue());
 
 			/*
-			 * Caso ocorra um erro, mostra um di·logo genÈrico de erro, sen„o, mostra um
-			 * resumo das informaÁıes do backup.
+			 * Caso ocorra um erro, mostra um di√°logo gen√©rico de erro, sen√£o, mostra um
+			 * resumo das informa√ß√µes do backup.
 			 */
 
 		} catch (IOException | InterruptedException e) {
@@ -220,9 +220,9 @@ public class BackupPSQL {
 	}
 
 	/*
-	 * FunÁ„o para salvar arquivo. filtro serve para definir o formato do arquivo
-	 * para ser salvo O par‚metro "C:/" Determina que a Janela ser· aberta
-	 * diretamente no C:/ ApÛs escolher o diretÛrio no fileToSave, ele vai jogar o
+	 * Fun√ß√£o para salvar arquivo. filtro serve para definir o formato do arquivo
+	 * para ser salvo O par√¢metro "C:/" Determina que a Janela ser√° aberta
+	 * diretamente no C:/ Ap√≥s escolher o diret√≥rio no fileToSave, ele vai jogar o
 	 * valor para o txtDiretorio.
 	 */
 	private void salvarArquivo() {
@@ -241,7 +241,7 @@ public class BackupPSQL {
 		}
 	}
 
-	/* Verificar se campos est„o validos */
+	/* Verificar se campos est√£o validos */
 	private boolean verificaSintaxe() {
 		boolean ok = false;
 
@@ -265,7 +265,7 @@ public class BackupPSQL {
 	}
 
 	/*
-	 * VerificaÁ„o entre localhost e outro Sempre retorna na variavel endOutro
+	 * Verifica√ß√£o entre localhost e outro Sempre retorna na variavel endOutro
 	 */
 	private String verificaOutro() {
 		String result = "";
@@ -283,7 +283,7 @@ public class BackupPSQL {
 	}
 
 	/*
-	 * VerificaÁ„o entre localhost e outro, Sempre retorna na variavel endOutro
+	 * Verifica√ß√£o entre localhost e outro, Sempre retorna na variavel endOutro
 	 */
 	private String verificaLocalhost() {
 		String result = "";
